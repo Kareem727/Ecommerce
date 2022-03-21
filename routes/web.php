@@ -34,3 +34,8 @@ route::get('/showproduct',[AdminController::class,'showproduct']);
 
 route::get('/deleteproduct/{id}',[AdminController::class,'deleteproduct']);
 
+route::get('/updateproduct/{id}',[AdminController::class,'updateproduct']);
+
+route::post('/updateproductpost/{id}',[AdminController::class,'updateproductpost']);
+
+// send this id to the                  function

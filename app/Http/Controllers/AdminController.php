@@ -17,7 +17,7 @@ class AdminController extends Controller
         try{
 
 
-   //         $data = new product;
+         //  $data = new product;
 
             $image=$request->file;
 
@@ -64,6 +64,39 @@ class AdminController extends Controller
         $data->delete();
         return redirect()->back();
 
+
+    }
+    public function updateproduct($id){
+        $data=product::find($id);
+        
+        return view('admin.updateproduct',compact('data'));
+
+
+    }
+
+
+
+    public function updateproductpost(Request $request ,$id){
+        $data=product::find($id);
+        
+       // $data = new product;
+
+        $image=$request->file;
+if($image){
+        $imagename =time().'.'.$image->getClientOriginalExtension();
+
+        $request->file->move('productimage', $imagename);
+
+        $data->image=$imagename;
+    }
+        $data->title=$request->title;
+        $data->price=$request->price;
+        $data->description=$request->description;
+        $data->quantity=$request->quantity;
+        $data->save();
+   
+
+        return redirect()->back();
 
     }
 

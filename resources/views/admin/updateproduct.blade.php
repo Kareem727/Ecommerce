@@ -3,6 +3,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+        label{
+         display: inline-block;
+          width: 200px;
+        }
+       
+    </style>
+
+      <base href="/public">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,45 +39,55 @@
         @include('admin.navbar')
         <!-- partial -->
         
-
+       
         <div class="container-fluid page-body-wrapper">
             <div class="container" align="center">
-
-                <div align="center" style="background-color: gray; padding: 20px">
-                   <div style="display: flex; justify-content: space-between">
-                    <div style="padding: 20px;">Title</div>
-                    <div style="padding: 20px;">Description</div>
-                    <div style="padding: 20px;">Quntity</div>
-                    <div style="padding: 20px;">Price</div>
-                    <div style="padding: 20px;">Image</div>
-                    <div style="padding: 20px;">Update</div>
-                    <div style="padding: 20px;">Delete</div>
-                   </div>
-
-                </div>
-@foreach ($data as $product )
-    
-
-                <div align="center" style="background-color: black; padding: 30px">
-                    <div style="display: flex; justify-content: space-between">
-                    <div>{{$product->title}}</div>
-                    <div>{{$product->description}}</div>
-                    <div>{{$product->quantity}}</div>
-                    <div>{{$product->price}}</div>
-                    <div><img height="100" width="100" src="/productimage/{{$product->image}}"></div>
-                    <div><a class="btn btn-secondary" href="{{url('updateproduct',$product->id)}}">Update</a></div>
-                    <div><a class="btn btn-danger" href="{{url('deleteproduct',$product->id)}}">Delete</a></div>
-                    </div>
-                </div>
-
-                @endforeach
+ 
+             <h1 style="color: white; padding-top: 25px; font-size: 25px;">Add Product</h1> 
+            <form action="{{url('updateproductpost', $data->id)}}" method="post" enctype="multipart/form-data">
+             @csrf
+             {{-- for more security
+             generate a new input cant be seen behind the senese --}}
+             <div style="padding: 15px">
+                <label>Product title</label>
+                <input style="color: black" type="text" name="title" value="{{$data->title}}" required="" >
             </div>
+ 
+            <div style="padding: 15px">
+             <label>Price</label>
+             <input style="color: black" type="text" name="price" value="{{$data->price}}" required="" >
+         </div>
+         <div style="padding: 15px">
+             <label>Description</label>
+             <input style="color: black" type="text" name="description" value="{{$data->description}}" required="" >
+         </div>
+         <div style="padding: 15px">
+             <label>Quantity</label>
+             <input style="color: black" type="text" name="quantity" value="{{$data->quantity}}" required="">
+         </div>
+         <div style="padding: 15px">
+            <label>Old Image</label>
+            <img height="100" width="100" src="/productimage/{{$data->image}}">
         </div>
+          <label>Add New Image</label>
+         <div style="padding: 15px">
+             <input style="color: white" type="file" name="file">
+         </div>
+         <div style="padding: 15px">
+             <input class="btn btn-success" type="submit">
+         </div>
+            </form>
+         </div>
+         </div>
+
 
         <!-- partial -->
-         <!-- main-panel ends -->
-       <!-- page-body-wrapper ends -->
-     <!-- container-scroller -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="admin/assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
