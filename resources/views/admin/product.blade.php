@@ -53,7 +53,7 @@
         </div>
         <div style="padding: 15px">
             <label>Description</label>
-            <input style="color: black" type="text" name="des" placeholder="Description" required="" >
+            <input style="color: black" type="text" name="description" placeholder="Description" required="" >
         </div>
         <div style="padding: 15px">
             <label>Quantity</label>
