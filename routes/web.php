@@ -38,4 +38,6 @@ route::get('/updateproduct/{id}',[AdminController::class,'updateproduct']);
 
 route::post('/updateproductpost/{id}',[AdminController::class,'updateproductpost']);
 
+route::get('/search',[HomeController::class,'search']);
+
 // send this id to the                  function
