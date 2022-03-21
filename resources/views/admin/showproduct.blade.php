@@ -3,13 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <style>
-          label{
-           display: inline-block;
-            width: 200px;
-          }
-         
-      </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,41 +29,46 @@
       <!-- partial -->
         @include('admin.navbar')
         <!-- partial -->
+        
+
         <div class="container-fluid page-body-wrapper">
-           <div class="container" align="center">
+            <div class="container" align="center">
 
-            <h1 style="color: white; padding-top: 25px; font-size: 25px;">Add Product</h1> 
-           <form action="{{url('uploadproduct')}}" method="post" enctype="multipart/form-data">
-            @csrf
-            <div style="padding: 15px">
-               <label>Product title</label>
-               <input style="color: black" type="text" name="title" placeholder="Product title" required="" >
-           </div>
+                <div align="center" style="background-color: gray; padding: 20px">
+                   <div style="display: flex; justify-content: space-between">
+                    <div style="padding: 20px;">Title</div>
+                    <div style="padding: 20px;">Description</div>
+                    <div style="padding: 20px;">Quntity</div>
+                    <div style="padding: 20px;">Price</div>
+                    <div style="padding: 20px;">Image</div>
+                    <div style="padding: 20px;">Update</div>
+                    <div style="padding: 20px;">Delete</div>
+                   </div>
 
-           <div style="padding: 15px">
-            <label>Price</label>
-            <input style="color: black" type="text" name="price" placeholder="Price" required="" >
+                </div>
+@foreach ($data as $product )
+    
+
+                <div align="center" style="background-color: black; padding: 30px">
+                    <div style="display: flex; justify-content: space-between">
+                    <div>{{$product->title}}</div>
+                    <div>{{$product->description}}</div>
+                    <div>{{$product->quantity}}</div>
+                    <div>{{$product->price}}</div>
+                    <div><img height="100" width="100" src="/productimage/{{$product->image}}"></div>
+                    <div><a class="btn btn-secondary">Update</a></div>
+                    <div><a class="btn btn-danger" href="{{url('deleteproduct',$product->id)}}">Delete</a></div>
+                    </div>
+                </div>
+
+                @endforeach
+            </div>
         </div>
-        <div style="padding: 15px">
-            <label>Description</label>
-            <input style="color: black" type="text" name="description" placeholder="Description" required="" >
-        </div>
-        <div style="padding: 15px">
-            <label>Quantity</label>
-            <input style="color: black" type="text" name="quantity" placeholder="quatity" required="">
-        </div>
-        <div style="padding: 15px">
-            <input style="color: black" type="file" name="file">
-        </div>
-        <div style="padding: 15px">
-            <input class="btn btn-success" type="submit">
-        </div>
-           </form>
-        </div>
-        </div>
-        <!-- main-panel ends -->
-      <!-- page-body-wrapper ends -->
-    <!-- container-scroller -->
+
+        <!-- partial -->
+         <!-- main-panel ends -->
+       <!-- page-body-wrapper ends -->
+     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="admin/assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->

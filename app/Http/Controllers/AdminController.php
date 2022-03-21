@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Product;
+
+
 class AdminController extends Controller
 {
     public function product(){
@@ -50,4 +52,20 @@ class AdminController extends Controller
          
 
     }
+
+    public function showproduct(){
+
+        $data=product::all();
+        return view('admin.showproduct',compact('data'));
+    }
+
+    public function deleteproduct($id){
+        $data=product::find($id);
+        $data->delete();
+        return redirect()->back();
+
+
+    }
+
+
 }
