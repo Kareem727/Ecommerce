@@ -23,8 +23,10 @@ class HomeController extends Controller
         }
         else{
             $data = product::paginate(3);
-
-            return view('user.home',compact('data'));
+            $user=auth()->user(); 
+            $count=cart::where('phone',$user->phone)->count();
+            //here we can find how much the user add to cart by his uniqe phone number
+            return view('user.home',compact('data','count'));
         }
     }
     public function index(){
@@ -34,7 +36,6 @@ class HomeController extends Controller
         else{
 
             $data = product::paginate(3);
-
             return view('user.home',compact('data'));
         }
     }
@@ -72,5 +73,10 @@ class HomeController extends Controller
 
 
       }
-
+public function showcart(){
+    $user=auth()->user(); 
+    $cart=cart::where('phone',$user->phone)->get();
+    $count=cart::where('phone',$user->phone)->count();
+    return view('user.showcart',compact('count','cart'));
+}
 }
