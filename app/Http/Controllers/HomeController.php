@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Cart;
+
 
 
 
@@ -36,14 +38,39 @@ class HomeController extends Controller
             return view('user.home',compact('data'));
         }
     }
-    public function search(Request $request){
-$search=$request->search;
-if($search == ''){
-    $data = product::paginate(3);
 
-    return view('user.home',compact('data'));
-}
-$data=product::where('title','Like','%'.$search.'%')->get();
-return view('user.home',compact('data'));
-    }
+
+            public function search(Request $request){
+                $search=$request->search;
+                if($search == ''){
+                    $data = product::paginate(3);
+
+                    return view('user.home',compact('data'));
+                }
+                $data=product::where('title','Like','%'.$search.'%')->get();
+                return view('user.home',compact('data'));
+            }
+
+      public function addcart(Request $request , $id){
+
+       if(Auth::id()){
+            $user=auth()->user();
+            $cart=new cart;
+            $product=product::find($id);
+            $cart->name =$user->name;
+            $cart->phone =$user->phone;
+            $cart->address =$user->address;
+            $cart->product_title=$product->title;
+            $cart->price=$product->price;
+            $cart->quantity= $request->quantity;
+            $cart->save();
+            return redirect()->back();
+       }
+       else{
+        return redirect('login');
+       }
+
+
+      }
+
 }

@@ -40,4 +40,7 @@ route::post('/updateproductpost/{id}',[AdminController::class,'updateproductpost
 
 route::get('/search',[HomeController::class,'search']);
 
+route::post('/addcart/{id}',[HomeController::class,'addcart']);
+
+
 // send this id to the                  function
