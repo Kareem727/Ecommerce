@@ -96,6 +96,7 @@ https://templatemo.com/tm-546-sixteen-clothing
             <td style="padding: 10px; font-size: 20px;">Product Name</td>
             <td style="padding: 10px; font-size: 20px;">Quantity</td>
             <td style="padding: 10px; font-size: 20px;">Price</td>
+            <td style="padding: 10px; font-size: 20px;">Edite</td>
 
         </tr>
 @foreach ($cart as $carts )
@@ -104,6 +105,8 @@ https://templatemo.com/tm-546-sixteen-clothing
 <td style="padding: 10px; color:rgb(160, 141, 209)">{{$carts->product_title}}</td>
 <td style="padding: 10px; color:red">{{$carts->quantity}}</td>
 <td style="padding: 10px; color:rgb(226, 19, 147)">{{$carts->price}}</td>
+<td style="padding: 10px; color: white"><a class="btn btn-danger" href="{{url('delete',$carts->id)}}">delete</a></td>
+
         </tr>
  @endforeach
 

@@ -44,4 +44,7 @@ route::post('/addcart/{id}',[HomeController::class,'addcart']);
 
 route::get('/showcart',[HomeController::class,'showcart']);
 
+route::get('/delete/{id}',[HomeController::class,'deletecart']);
+
+
 // send this id to the                  function

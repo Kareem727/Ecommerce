@@ -79,4 +79,13 @@ public function showcart(){
     $count=cart::where('phone',$user->phone)->count();
     return view('user.showcart',compact('count','cart'));
 }
+
+public function deletecart($id){
+
+    $data=cart::find($id);
+    $data->delete();
+    return redirect()->back();
+
+}
+
 }
