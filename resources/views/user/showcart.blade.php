@@ -99,18 +99,30 @@ https://templatemo.com/tm-546-sixteen-clothing
             <td style="padding: 10px; font-size: 20px;">Edite</td>
 
         </tr>
+        <form action="{{url('order')}}" method="POST">
+          @csrf
 @foreach ($cart as $carts )
     
         <tr style=" background-color: black">
-<td style="padding: 10px; color:rgb(160, 141, 209)">{{$carts->product_title}}</td>
-<td style="padding: 10px; color:red">{{$carts->quantity}}</td>
-<td style="padding: 10px; color:rgb(226, 19, 147)">{{$carts->price}}</td>
-<td style="padding: 10px; color: white"><a class="btn btn-danger" href="{{url('delete',$carts->id)}}">delete</a></td>
+<td style="padding: 10px; color:rgb(160, 141, 209)">
+  <input type="text" name="productname[]" value="{{$carts->product_title}}" hidden>
+  {{$carts->product_title}}</td>
+<td style="padding: 10px; color:red">
+  <input type="text" name="quantity[]" value="{{$carts->quantity}}" hidden>
+  {{$carts->quantity}}</td>
+<td style="padding: 10px; color:rgb(226, 19, 147)">
+  <input type="text" name="price[]" value="{{$carts->price}}" hidden>
+  {{$carts->price}}</td>
+<td style="padding: 10px; color: white">
+
+  <a class="btn btn-danger" href="{{url('delete',$carts->id)}}">delete</a></td>
 
         </tr>
  @endforeach
 
     </table>
+    <button class="btn btn-success">Confirm</button>
+  </form>
   </div>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
