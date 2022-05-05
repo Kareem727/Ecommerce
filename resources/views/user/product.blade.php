@@ -1,5 +1,13 @@
 <div class="latest-products">
       <div class="container">
+      @if(Session('msg'))
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{Session('msg')}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          @endif
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
@@ -13,10 +21,7 @@
            
             </div>
           </div>
-         
           @foreach ($data as $product )
-            
-
           <div class="col-md-4">
             <div class="product-item">
               <a href="#"><img height="350" width="140" src="/productimage/{{$product->image}}" alt=""></a>
@@ -29,14 +34,10 @@
                  @csrf
                  <input type="number" value="1" min="1" class="form-control mb-3" style=" width: 80px" name="quantity">
                  <input class="btn btn-primary" type="submit" value="Add Cart">  
- 
                </form>
-
-
               </div>
             </div>
           </div>
-
           @endforeach
 @if (method_exists($data,'links'))
   

@@ -16794,6 +16794,9 @@ code {
   .btn-success:not(.btn-light):not(.btn-secondary):focus, .btn-success:not(.btn-light):not(.btn-secondary):active {
     background: #00d25b;
     border-color: #00d25b; }
+    .btn-success:not(.btn-light):not(.btn-secondary) {
+      margin-left: 5px;
+  }
 
 .btn-inverse-info {
   background-color: rgba(143, 95, 232, 0.2);
@@ -20294,7 +20297,6 @@ div.tagsinput {
             margin-right: auto; } }
     .navbar .navbar-menu-wrapper .search input {
       background: #191c24;
-      padding: 13px 20px 11px 20px;
       border: 1px solid #2c2e33; }
       .navbar .navbar-menu-wrapper .search input::placeholder {
         color: #6c7293;

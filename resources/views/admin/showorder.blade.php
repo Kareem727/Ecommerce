@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Show order</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="admin/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="admin/assets/vendors/css/vendor.bundle.base.css">
@@ -31,6 +31,11 @@
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <div class="container" align="center">
+                @if (session('msg'))
+                  <div class="alert alert-success">
+                    <strong>{{Session('msg')}}</strong>
+                  </div>
+                @endif
                 <table>
                     <tr style="background-color: gray">
                         <td style="padding: 20px">Customer name</td>
@@ -43,30 +48,28 @@
                         <td style="padding: 20px">Action</td>
 
                     </tr>
-@foreach ($order as $orders)
-<tr align="center">
-
-    <td style="padding: 20px">{{$orders->name}}</td>
-    <td style="padding: 20px">{{$orders->phone}}</td>
-    <td style="padding: 20px">{{$orders->address}}</td>
-    <td style="padding: 20px">{{$orders->product_name}}</td>
-    <td style="padding: 20px">{{$orders->price}}</td>
-    <td style="padding: 20px">{{$orders->quantity}}</td>
-    <td style="padding: 20px">{{$orders->status}}</td>
-    <td>
-        <a class="btn btn-success" href="{{url('updatestatus',$orders->id)}}">
-            Deliver
-        </a>
-    </td>
-
-</tr>
-@endforeach
-                    
-
-
+                    @foreach ($order as $orders)
+                      <tr align="center">
+                        <td style="padding: 20px">{{$orders->name}}</td>
+                        <td style="padding: 20px">{{$orders->phone}}</td>
+                        <td style="padding: 20px">{{$orders->address}}</td>
+                        <td style="padding: 20px">{{$orders->product_name}}</td>
+                        <td style="padding: 20px">{{$orders->price}}</td>
+                        <td style="padding: 20px">{{$orders->quantity}}</td>
+                        <td style="padding: 20px">{{$orders->status}}</td>
+                        <td>
+                            <a class="btn btn-success" href="{{url('confirmorder',$orders->id)}}">
+                                Deliver
+                            </a>
+                            <a class="btn btn-danger" href="{{url('rejectorder',$orders->id)}}">
+                              Reject
+                            </a>
+                        </td>
+                      </tr>
+                    @endforeach
                 </table>
             </div>
-        </div> 
+          </div> 
          <!-- partial -->
         </div>
         <!-- main-panel ends -->

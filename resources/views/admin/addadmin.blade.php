@@ -1,19 +1,17 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <style>
+    <style>
           label{
            display: inline-block;
             width: 200px;
           }
          
-      </style>
+    </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Add Product</title>
+    <title>Add admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="admin/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="admin/assets/vendors/css/vendor.bundle.base.css">
@@ -32,43 +30,50 @@
     <link rel="shortcut icon" href="admin/assets/images/favicon.png" />
   </head>
   <body>
+    
         @include('admin.sidebar')
       <!-- partial -->
         @include('admin.navbar')
         <!-- partial -->
+        
         <div class="container-fluid page-body-wrapper">
-           <div class="container" align="center">
-            <h1 style="color: white; padding-top: 25px; font-size: 25px;">Add Product</h1> 
-           <form action="{{url('uploadproduct')}}" method="post" enctype="multipart/form-data">
+            <div class="container" align="center">
+            <h1 style="color: white; padding-top: 25px; font-size: 25px;">Add Admin</h1> 
+           <form method="post" action="{{url('addadmin')}}" enctype="multipart/form-data">
             @csrf
             <div style="padding: 15px">
-               <label>Product title</label>
-               <input style="color: black" type="text" name="title" placeholder="Product title" required="" >
+               <label>Name</label>
+               <input style="color: black" type="text" name="name" placeholder="admin name" required="" >
            </div>
 
            <div style="padding: 15px">
-            <label>Price</label>
-            <input style="color: black" type="text" name="price" placeholder="Price" required="" >
+            <label>Email</label>
+            <input style="color: black" type="text" name="email" placeholder="email" required="" >
         </div>
         <div style="padding: 15px">
-            <label>Description</label>
-            <input style="color: black" type="text" name="description" placeholder="Description" required="" >
+            <label>Phone</label>
+            <input style="color: black" type="text" name="phone" placeholder="phone" required="" >
         </div>
         <div style="padding: 15px">
-            <label>Quantity</label>
-            <input style="color: black" type="text" name="quantity" placeholder="quatity" required="">
+            <label>Password</label>
+            <input style="color: black" type="text" name="password" placeholder="password" required="">
         </div>
         <div style="padding: 15px">
-            <input style="color: black" type="file" name="file">
+            <label>Address</label>
+            <input style="color: black" type="text" name="address" placeholder="address" required="">
         </div>
         <div style="padding: 15px">
             <input class="btn btn-success" type="submit">
         </div>
            </form>
-        </div>
+            </div>
+        </div> 
+         <!-- partial -->
         </div>
         <!-- main-panel ends -->
+      </div>
       <!-- page-body-wrapper ends -->
+    </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="admin/assets/vendors/js/vendor.bundle.base.js"></script>

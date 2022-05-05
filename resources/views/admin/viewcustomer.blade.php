@@ -1,19 +1,10 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <style>
-          label{
-           display: inline-block;
-            width: 200px;
-          }
-         
-      </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Add Product</title>
+    <title>View customer</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="admin/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="admin/assets/vendors/css/vendor.bundle.base.css">
@@ -32,43 +23,46 @@
     <link rel="shortcut icon" href="admin/assets/images/favicon.png" />
   </head>
   <body>
+    
         @include('admin.sidebar')
       <!-- partial -->
         @include('admin.navbar')
         <!-- partial -->
+        
         <div class="container-fluid page-body-wrapper">
-           <div class="container" align="center">
-            <h1 style="color: white; padding-top: 25px; font-size: 25px;">Add Product</h1> 
-           <form action="{{url('uploadproduct')}}" method="post" enctype="multipart/form-data">
-            @csrf
-            <div style="padding: 15px">
-               <label>Product title</label>
-               <input style="color: black" type="text" name="title" placeholder="Product title" required="" >
-           </div>
+            <div class="container" align="center">
+            <form action="{{url('searchcustomer')}}" method="post" class="form-inline" style="float: right; padding: 10px">
+              @csrf
+                <input class="form-conntrol" type="search" name="search" placeholder="search customer by name">
+              <input type="submit" value="search" class="btn btn-success">
+            </form>
+                <table>
+                    <tr style="background-color: gray">
+                        <td style="padding: 20px">Customer name</td>
+                        <td style="padding: 20px">Phone</td>
+                        <td style="padding: 20px">Address</td>
+                        <td style="padding: 20px">email</td>
+                    </tr>
+@foreach ($users as $user)
+        <tr align="center">
+            <td style="padding: 20px">{{$user->name}}</td>
+            <td style="padding: 20px">{{$user->phone}}</td>
+            <td style="padding: 20px">{{$user->address}}</td>
+            <td style="padding: 20px">{{$user->email}}</td>
+        </tr>
+@endforeach
+                    
 
-           <div style="padding: 15px">
-            <label>Price</label>
-            <input style="color: black" type="text" name="price" placeholder="Price" required="" >
-        </div>
-        <div style="padding: 15px">
-            <label>Description</label>
-            <input style="color: black" type="text" name="description" placeholder="Description" required="" >
-        </div>
-        <div style="padding: 15px">
-            <label>Quantity</label>
-            <input style="color: black" type="text" name="quantity" placeholder="quatity" required="">
-        </div>
-        <div style="padding: 15px">
-            <input style="color: black" type="file" name="file">
-        </div>
-        <div style="padding: 15px">
-            <input class="btn btn-success" type="submit">
-        </div>
-           </form>
-        </div>
+
+                </table>
+            </div>
+        </div> 
+         <!-- partial -->
         </div>
         <!-- main-panel ends -->
+      </div>
       <!-- page-body-wrapper ends -->
+    </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="admin/assets/vendors/js/vendor.bundle.base.js"></script>

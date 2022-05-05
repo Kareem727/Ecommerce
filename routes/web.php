@@ -38,6 +38,14 @@ route::get('/updateproduct/{id}',[AdminController::class,'updateproduct']);
 
 route::post('/updateproductpost/{id}',[AdminController::class,'updateproductpost']);
 
+route::post('/searchproduct',[AdminController::class,'searchproduct']);
+
+route::get('/viewcustomer',[AdminController::class,'viewcustomer']);
+
+route::post('/searchcustomer',[AdminController::class,'searchcustomer']);
+
+route::get('/addadmin',[AdminController::class,'admin']);
+
 route::get('/search',[HomeController::class,'search']);
 
 route::post('/addcart/{id}',[HomeController::class,'addcart']);
@@ -50,6 +58,8 @@ route::post('/order',[HomeController::class,'confirm']);
 
 route::get('/showorder',[AdminController::class,'showorder']);
 
-route::get('/updatestatus/{id}',[AdminController::class,'updatestatus']);
+route::get('/confirmorder/{id}',[AdminController::class,'confirmorder']);
+
+route::get('/rejectorder/{id}',[AdminController::class,'rejectorder']);
 
 // send this id to the                  function

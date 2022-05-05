@@ -33,7 +33,11 @@
 
         <div class="container-fluid page-body-wrapper">
             <div class="container" align="center">
-
+              @if (session('msg'))
+                <div class="alert alert-success">
+                  <strong>{{Session('msg')}}</strong>
+                </div>
+              @endif
                 <div align="center" style="background-color: gray; padding: 20px">
                    <div style="display: flex; justify-content: space-between">
                     <div style="padding: 20px;">Title</div>

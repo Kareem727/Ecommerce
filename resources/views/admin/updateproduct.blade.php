@@ -15,7 +15,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Update product</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="admin/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="admin/assets/vendors/css/vendor.bundle.base.css">
@@ -42,8 +42,13 @@
        
         <div class="container-fluid page-body-wrapper">
             <div class="container" align="center">
- 
-             <h1 style="color: white; padding-top: 25px; font-size: 25px;">Add Product</h1> 
+              @if (session('msg'))
+                <div class="alert alert-success">
+                  <strong>{{Session('msg')}}</strong>
+                </div>
+              @endif
+              <h1 style="color: white; padding-top: 25px; font-size: 25px;">Add Product
+              </h1> 
             <form action="{{url('updateproductpost', $data->id)}}" method="post" enctype="multipart/form-data">
              @csrf
              {{-- for more security
